@@ -1,0 +1,54 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/ledstrip.css" />
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.js"></script>
+    <script type="text/javascript" src="ledstrip.js"></script>
+    <script type="text/javascript" src="ws2812.js"></script>
+    <script type="text/javascript" src="arduino_funcs.js"></script>
+    <script type="text/javascript" src="midi.js"></script>
+    <script type="text/javascript" src="rAF.js"></script>
+    <script type="text/javascript">
+    var strip, animation; // need to be global
+
+    $(document).ready(function(){
+      var container = $('.ledstrip')[0];
+      var light_count = 26;
+      strip = LEDstrip(container, light_count);
+      driver = new Midi(strip);
+      driver.init();
+      animation = driver.animate.bind(driver)();
+
+      $('#diffuser').change(function(e) {
+        $('.ledstrip').toggleClass('diffuse');
+      });
+        driver.init();
+        animation = driver.animate();
+      });
+    //});
+    </script>
+</head>
+<body>
+       <header>
+         <h1>LED Strip Simulator</h1>
+         <p>A software simulation of individually addressable RGB LED strips
+         (WS2811/WS2812), often used with Arduino.</p>
+       </header>
+       <div id="device_info">
+         <div id="key_data"></div>
+         <div id="inputs"></div>
+         <div id="outputs"></div>
+       </div>
+       <article>
+         <div class="ledstrip"></div>
+         <br />
+         <form>
+           <input type="checkbox" id="diffuser" value="0" /> <label for="diffuser">Diffuser</label>
+         </form>
+         <p id="output"></p>
+       </article>
+     </body>
+     </html>
