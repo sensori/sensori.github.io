@@ -39,9 +39,9 @@ function Midi (ledstrip) {
 	// maybe each led block should have its own event for on/off?
 	// keep an array for each note to say if it's on or off
 	// prepare audio files
-	var notes = ["http://sensori.github.io/audio/C.mp3", "http://sensori.github.io/audio/D.mp3",
-								"http://sensori.github.io/audio/E.mp3","http://sensori.github.io/audio/F.mp3",
-								"http://sensori.github.io/audio/G.mp3"];
+	var notes = ["http://sensori.github.io/ledstrip/audio/C.mp3", "http://sensori.github.io/ledstrip/audio/D.mp3",
+								"http://sensori.github.io/ledstrip/audio/E.mp3","http://sensori.github.io/ledstrip/audio/F.mp3",
+								"http://sensori.github.io/ledstrip/audio/G.mp3"];
 	for(var i = 0; i < noteStatus.length; i++){
 		addAudioProperties(i);
 	}
