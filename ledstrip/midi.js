@@ -101,7 +101,7 @@ Midi.prototype.wave = function (tick) {
 	rgb = rgbSum;
 }
 
-//TODO: decrease the averaging as more keys are pressed at once to get to white
+//TODO: decrease the averaging factor as more keys are pressed at once to get to white
 function AddRgb(rgb1, rgb2, notesOn) {
 	// get the averaging factor based on # of notes on
 	var factor = Math.max(2 - (0.1 * notesOn), 1);
